@@ -1,12 +1,24 @@
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useState } from 'react';
+// import { signUpApi } from '../services/api/authApi';
 
 export default function SignupScreen({ navigation }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [deviceName, setDeviceName] = useState('');
+const handleSignup = async() => {
+    const payload={
+        email,
+        password,
+        deviceName
+    }
+    console.log(payload,'payloadpayloadpayload')
+    //  const res = await signUpApi(payload);
+    //  console.log(res,'resresresresres')
 
+    navigation.navigate('Login')
+  }
   return (
     <SafeAreaView className="flex-1 bg-gray-100 justify-center px-5">
       <View className="bg-white rounded-2xl p-6 shadow-md">
@@ -39,7 +51,8 @@ export default function SignupScreen({ navigation }) {
 
         <TouchableOpacity
           className="bg-black py-4 rounded-xl mb-4"
-          onPress={() => navigation.navigate('Login')}
+          onPress={handleSignup}
+
         >
           <Text className="text-white text-center font-semibold text-lg">
             Sign Up
